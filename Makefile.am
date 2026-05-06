@@ -127,6 +127,7 @@ endif
 ccminer_LDADD += -lcuda
 
 nvcc_ARCH :=
+nvcc_ARCH += -arch=native
 #nvcc_ARCH += -gencode=arch=compute_75,code=\"sm_75,compute_75\" # CUDA 10 req.
 #nvcc_ARCH += -gencode=arch=compute_72,code=\"sm_72,compute_72\" # CUDA 10 req.
 #nvcc_ARCH += -gencode=arch=compute_70,code=\"sm_70,compute_70\" # CUDA 9.1
@@ -194,28 +195,28 @@ JHA/cuda_jha_compactionTest.o: JHA/cuda_jha_compactionTest.cu
 
 # This object does not use cuda device code but call the different kernels (autotune)
 scrypt/salsa_kernel.o: scrypt/salsa_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
+	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -arch=native -o $@ -c $<
 
 # These kernels are for older devices (SM)
 
 # Originally sm_20
 scrypt/test_kernel.o: scrypt/test_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
+	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -arch=native -o $@ -c $<
 
 # Originally sm_20
 scrypt/fermi_kernel.o: scrypt/fermi_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
+	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -arch=native -o $@ -c $<
 
 # Originally sm_30
 scrypt/kepler_kernel.o: scrypt/kepler_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
+	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -arch=native -o $@ -c $<
 
 # Originally sm_30
 scrypt/nv_kernel.o: scrypt/nv_kernel.cu
-	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
+	$(NVCC) $(JANSSON_INCLUDES) -I. @CUDA_INCLUDES@ @CUDA_CFLAGS@ -arch=native -o $@ -c $<
 
 scrypt/titan_kernel.o: scrypt/titan_kernel.cu
-	$(NVCC) $(nvcc_FLAGS) -gencode=arch=compute_35,code=\"sm_35,compute_35\" -o $@ -c $<
+	$(NVCC) $(nvcc_FLAGS) -arch=native -o $@ -c $<
 
 skein.o: skein.cu
 	$(NVCC) $(nvcc_FLAGS) --maxrregcount=64 -o $@ -c $<
