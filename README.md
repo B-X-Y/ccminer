@@ -1,10 +1,16 @@
 # ccminer
 
-Based on Christian Buchner's &amp; Christian H.'s CUDA project, no more active on github since 2014.
+Originally based on the CUDA miner project by Christian Buchner and Christian H. Later actively maintained and extended
+by tpruvot, with additional algorithm contributions from djm34 and alexis78. This fork continues maintenance with modern
+build improvements.
 
 Check the [README.txt](README.txt) for the additions
 
-BTC donation address: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+Original maintainer donation address:
+BTC: 1AJdfCpLWPNoAMDfHF1wD5y8VgKSSTHxPo (tpruvot)
+
+Fork maintainer donation address:
+BTC: bc1qhapd3jsmncghhxygc5a8ft57zxsq65mqdy5cpx (B-X-Y)
 
 A part of the recent algos were originally written by [djm34](https://github.com/djm34) and [alexis78](https://github.com/alexis78)
 
