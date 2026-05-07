@@ -1,0 +1,15 @@
+services:
+  miner:
+    container_name: miner-ccminer
+    build:
+      context: .
+      dockerfile: local.Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
